@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/react_dom.js"></script>
+    <script src="./lib/react.js"></script>
+    <script src="./lib/babel.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        var findBottomLeftValue = function (root) {
+            let depth =-1;
+            let max;
+            //dfs，左中右
+            const dfs=(root,dep)=>{
+                if(!root){return}
+                if(dep>depth){
+                    depth=dep;
+                    max = root.val;
+                }
+                dfs(root.left,dep+1)
+                dfs(root.right,dep+1)
+            }
+            dfs(root,0)
+            return max;
+        };
+    </script>
+</body>
+
+</html>
